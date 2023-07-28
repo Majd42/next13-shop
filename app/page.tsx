@@ -1,6 +1,5 @@
 import ProductList from "@/components/ProductList";
 import { getProducts } from "@/utils/products";
-import axios from "axios";
 
 
 

@@ -28,10 +28,15 @@ export const CartContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  let getCartFromLocatStorage = JSON.parse(localStorage.getItem('cart') as string )
-  const [cart, setCart] = useState<CartProduct[]>(getCartFromLocatStorage);
+ 
+  const [cart, setCart] = useState<CartProduct[]>([]);
   const [openCart, setOpenCart] = useState<boolean>(false);
 
+
+  useEffect(() => {
+    let getCartFromLocatStorage = JSON.parse(localStorage.getItem('cart') as string )
+    setCart(getCartFromLocatStorage)
+  },[])
   const addItemToCart = (product: Product) => {
     const existingProduct = cart.find((p) => p.product.id === product.id);
 
